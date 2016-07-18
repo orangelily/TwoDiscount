@@ -1,1 +1,5 @@
 language: java
+#version: 1.0
+jdk:
+  - oraclejdk8
+  - openjdk8
