@@ -28,46 +28,46 @@ public class ProductTest {
 		Assert.assertEquals("篮球", product.getName());
 
 		product.setName("乒乓球");
-		Assert.assertNotEquals("乒乓球", product.getName());
+		Assert.assertNotEquals("篮球", product.getName());
 	}
 
 	@Test
 	public void unitTest() {
 		Product product = new Product();
-		product.setUnit("ƿ");
-		Assert.assertEquals("ƿ", product.getUnit());
-
-		product.setUnit("��");
-		Assert.assertEquals("��", product.getUnit());
-
-		product.setUnit("ƿ");
-		Assert.assertNotEquals("��", product.getUnit());
+		product.setUnit("瓶");
+		Assert.assertEquals("瓶", product.getUnit());
+		
+		product.setUnit("袋");
+		Assert.assertEquals("袋", product.getUnit());
+		
+		product.setUnit("瓶");
+		Assert.assertNotEquals("袋", product.getUnit());
 	}
 
 	@Test
 	public void categoryTest() {
 		Product product = new Product();
-		product.setCategory("����");
-		Assert.assertEquals("����", product.getCategory());
-
-		product.setCategory("ˮ��");
-		Assert.assertEquals("ˮ��", product.getCategory());
-
-		product.setCategory("����");
-		Assert.assertNotEquals("ˮ��", product.getCategory());
+		product.setCategory("饮料");
+		Assert.assertEquals("饮料", product.getCategory());
+		
+		product.setCategory("水果");
+		Assert.assertEquals("水果", product.getCategory());
+		
+		product.setCategory("饮料");
+		Assert.assertNotEquals("水果", product.getCategory());
 	}
 
 	@Test
 	public void subCategoryTest() {
 		Product product = new Product();
-		product.setSubCategory("̼������");
-		Assert.assertEquals("̼������", product.getSubCategory());
-
-		product.setSubCategory("�ȴ�ˮ��");
-		Assert.assertEquals("�ȴ�ˮ��", product.getSubCategory());
-
-		product.setSubCategory("�ȴ�ˮ��");
-		Assert.assertNotEquals("̼������", product.getSubCategory());
+		product.setSubCategory("碳酸饮料");
+		Assert.assertEquals("碳酸饮料", product.getSubCategory());
+		
+		product.setSubCategory("热带水果");
+		Assert.assertEquals("热带水果", product.getSubCategory());
+		
+		product.setSubCategory("热带水果");
+		Assert.assertNotEquals("碳酸饮料", product.getSubCategory());
 	}
 
 	@Test
