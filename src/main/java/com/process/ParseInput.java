@@ -15,7 +15,7 @@ import com.model.Product;
  * 2016年7月17日
  */
 public class ParseInput {
-	private Map<String, Product> map = new HashMap<>();
+	private Map<String, Product> map = new HashMap<String, Product>();
 
 	public ParseInput() throws NumberFormatException, IOException {
 		readProductList();
@@ -42,7 +42,7 @@ public class ParseInput {
 	
 	// 解析条形码输入，输入中包含数量，进行分割
 	public Map<Product, Double> parseInput(String inputString) {
-		Map<Product, Double> buy = new HashMap<>();
+		Map<Product, Double> buy = new HashMap<Product, Double>();
 		String[] input = inputString.split(",");
 		for (String str : input) {
 			String[] content = str.split("-");

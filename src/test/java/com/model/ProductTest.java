@@ -21,14 +21,14 @@ public class ProductTest {
 	@Test
 	public void nameTest() {
 		Product product = new Product();
-		product.setName("����");
-		Assert.assertEquals("����", product.getName());
+		product.setName("可乐");
+		Assert.assertEquals("可乐", product.getName());
 
-		product.setName("ѩ��");
-		Assert.assertEquals("ѩ��", product.getName());
+		product.setName("篮球");
+		Assert.assertEquals("篮球", product.getName());
 
-		product.setName("����");
-		Assert.assertNotEquals("ѩ��", product.getName());
+		product.setName("乒乓球");
+		Assert.assertNotEquals("乒乓球", product.getName());
 	}
 
 	@Test

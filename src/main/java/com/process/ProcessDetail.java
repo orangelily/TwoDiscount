@@ -13,7 +13,7 @@ import com.model.DiscountTwoSendOne;
  */
 public class ProcessDetail {
 	//保存多个不同的打折类型
-	private List<Discount> discount = new ArrayList<>();
+	private List<Discount> discount = new ArrayList<Discount>();
 	
 	private 
 	

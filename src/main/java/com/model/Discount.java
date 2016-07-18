@@ -10,7 +10,7 @@ import java.util.List;
  * 2016年7月17日
  */
 public abstract class Discount {
-	private List<Product> discountList = new ArrayList<>();
+	private List<Product> discountList = new ArrayList<Product>();
 
 	public Discount() {
 
