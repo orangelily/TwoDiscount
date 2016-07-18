@@ -63,7 +63,7 @@ public class DiscountTwoSendOneTest {
 
 	@Test
 	public void getAllTest() {
-		List<Product> discountList = new ArrayList<>();
+		List<Product> discountList = new ArrayList<Product>();
 		Product product1 = new Product("Item000001", "可乐", "瓶", " 饮料", "碳酸饮料", 5.00);
 		Product product2 = new Product("Item000002", "可乐", "瓶", " 饮料", "碳酸饮料", 5.00);
 		Product product3 = new Product("Item000003", "可乐", "瓶", " 饮料", "碳酸饮料", 5.00);
