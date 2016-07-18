@@ -73,24 +73,5 @@ public class DiscountNinetyFiveTest {
 		Assert.assertTrue(discountList == discount.getAll());
 	}
 	
-	@Test
-	public void calculateDiscountTest(){
-		Discount discount = new DiscountNinetyFive();
-		Product product1 = new Product("Item000001", "可乐", "瓶", " 饮料", "碳酸饮料", 5.00);
-		Product product2 = new Product("Item000002", "羽毛球", "个", " 用品", "运动器材", 1.00);
-		Product product3 = new Product("Item000003", "苹果", "斤", "食品", "水果", 5.50);
-		discount.addItem(product1);
-		discount.addItem(product2);
-		discount.addItem(product3);
-		
-		double result1 = discount.calculateDiscount(product1, 2);
-		Assert.assertTrue(Math.abs(0.50 - result1)<0.000001);
-		
-		double result2 = discount.calculateDiscount(product2, 6);
-		Assert.assertTrue(Math.abs(0.30 - result2)<0.000001);
-		
-		double result3 = discount.calculateDiscount(product3, 2);
-		Assert.assertTrue(Math.abs(0.55 - result3)<0.000001);
-	}
 	
 }

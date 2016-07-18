@@ -7,7 +7,6 @@ public class DiscountNinetyFive extends Discount {
 
 	
 	public DiscountNinetyFive() {
-		super();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -16,7 +15,6 @@ public class DiscountNinetyFive extends Discount {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
 	public double calculateDiscount(Product product, double number) {	  
 		double result = 0.0;
 		result = product.getPrice() * number * 0.05;

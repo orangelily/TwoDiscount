@@ -1,5 +1,9 @@
 package com.model;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,13 +13,37 @@ import java.util.List;
  * @author yefengzhichen
  * 2016年7月17日
  */
-public abstract class Discount {
+public class Discount {
 	private List<Product> discountList = new ArrayList<Product>();
-
-	public Discount() {
-
+	
+	public Discount(){} 
+	
+	public Discount(String path) {
+		readDiscountList(path);
 	}
-
+	
+	public void readDiscountList(String path){
+		InputStream is = this.getClass().getResourceAsStream(path);
+		InputStreamReader read = new InputStreamReader(is);
+		BufferedReader br = new BufferedReader(read);
+		String lineTxt = null;
+		try {
+			while ((lineTxt = br.readLine()) != null) {
+				
+				
+			}
+		} catch (NumberFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			read.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public Discount(List<Product> discountList) {
 		this.discountList = discountList;
 	}
@@ -39,5 +67,5 @@ public abstract class Discount {
 		return discountList;
 	}
 	
-	public abstract double calculateDiscount(Product product, double number);
+
 }

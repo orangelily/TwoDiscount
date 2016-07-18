@@ -15,7 +15,6 @@ public class DiscountTwoSendOne extends Discount {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
 	public double calculateDiscount(Product product, double number) {
 		double result = 0.0;
 		if (number >= 3.0) {

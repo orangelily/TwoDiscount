@@ -17,27 +17,37 @@ import com.model.Product;
 public class ParseInput {
 	private Map<String, Product> map = new HashMap<String, Product>();
 
-	public ParseInput() throws NumberFormatException, IOException {
+	public ParseInput(){
 		readProductList();
 	}
 
-	public void readProductList() throws NumberFormatException, IOException {
+	public void readProductList(){
 		InputStream is = this.getClass().getResourceAsStream("/product.txt");
 		InputStreamReader read = new InputStreamReader(is);
 		BufferedReader br = new BufferedReader(read);
 		String lineTxt = null;
-		while ((lineTxt = br.readLine()) != null) {
-			String[] content = lineTxt.split(",");
-			String barcode = content[0];
-			String name = content[1];
-			String unit = content[2];
-			String category = content[3];
-			String subCategory = content[4];
-			double price = Double.parseDouble(content[5]);
-			Product product = new Product(barcode, name, unit, category, subCategory, price);
-			map.put(barcode, product);
+		try {
+			while ((lineTxt = br.readLine()) != null) {
+				String[] content = lineTxt.split(",");
+				String barcode = content[0];
+				String name = content[1];
+				String unit = content[2];
+				String category = content[3];
+				String subCategory = content[4];
+				double price = Double.parseDouble(content[5]);
+				Product product = new Product(barcode, name, unit, category, subCategory, price);
+				map.put(barcode, product);
+			}
+		} catch (NumberFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		read.close();
+		try {
+			read.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	// 解析条形码输入，输入中包含数量，进行分割
