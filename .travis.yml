@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 language: java
 
 sudo: required
 jdk:
   - oraclejdk8
   
+=======
+language: java
+>>>>>>> 74d1071439c28f305a2430141867bcdd157f441e
