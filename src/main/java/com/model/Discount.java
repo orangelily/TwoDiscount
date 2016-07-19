@@ -19,31 +19,9 @@ public class Discount {
 	public Discount(){} 
 	
 	public Discount(String path) {
-		readDiscountList(path);
+		
 	}
-	
-	public void readDiscountList(String path){
-		InputStream is = this.getClass().getResourceAsStream(path);
-		InputStreamReader read = new InputStreamReader(is);
-		BufferedReader br = new BufferedReader(read);
-		String lineTxt = null;
-		try {
-			while ((lineTxt = br.readLine()) != null) {
-				
-				
-			}
-		} catch (NumberFormatException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			read.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
+		
 	public Discount(List<Product> discountList) {
 		this.discountList = discountList;
 	}
