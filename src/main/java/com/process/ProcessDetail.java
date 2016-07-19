@@ -167,9 +167,9 @@ public class ProcessDetail {
 		 * 总计：25.00(元)
 		 */
 		if ((discount2_1 == null || discount2_1.size() <= 0) && (discount95 == null || discount95.size() <= 0)) {
-			sb.append("总计：");
+			sb.append("----------------------\n总计：");
 			sb.append(df.format(totalPrice));
-			sb.append("元");
+			sb.append("元\n**********************");
 		} else {
 			if (discount2_1.size() > 0) {
 				sb.append("买二减一商品： ");
