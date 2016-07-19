@@ -110,6 +110,7 @@ public class Calculate {
 		String[] input = inputString.split(",");
 		Map<String, Double> buy = new HashMap<>();
 		for (String str : input) {
+			str = str.substring(1, str.length()-1);
 			String[] content = str.split("-");
 			double num = 0.0;
 			if (content.length == 1) {
