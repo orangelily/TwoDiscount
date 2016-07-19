@@ -27,7 +27,7 @@ public class ProcessDetail {
 	Discount discountNinetyFive = new DiscountNinetyFive();
 
 	public ProcessDetail() {
-
+		
 	}
 
 	public String calculate(Map<Product, Double> map) {

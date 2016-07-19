@@ -30,7 +30,7 @@ public class ParseInput {
 
 	public ParseInput() {
 		readProductList();
-
+		
 	}
 
 	public void readProductList() {
