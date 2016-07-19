@@ -106,4 +106,55 @@ public class CalculateTest {
 		Assert.assertTrue(result1 && result2);
 	}
 
+	// 以下测试calculate()
+	@Test
+	public void calculate_one_item_not_discount_test() throws Exception {
+		Calculate calculate = new Calculate();
+		Map<String, Double> buyMap = new HashMap<>();
+		buyMap.put("ITEM000001", 3.00);
+		String result = calculate.calculate(buyMap);
+		Assert.assertNotNull(result);
+		System.out.println(result);
+	}
+	
+	@Test
+	public void calculate_one_item_has_discount2_1_test() throws Exception {
+		Calculate calculate = new Calculate();
+		Map<String, Double> buyMap = new HashMap<>();
+		buyMap.put("ITEM000000", 3.00);
+		String result = calculate.calculate(buyMap);
+		Assert.assertNotNull(result);
+		System.out.println(result);
+	}
+	
+	@Test
+	public void calculate_one_item_has_discount2_1_and_discount95_test() throws Exception {
+		Calculate calculate = new Calculate();
+		Map<String, Double> buyMap = new HashMap<>();
+		buyMap.put("ITEM000002", 6.00);
+		String result = calculate.calculate(buyMap);
+		Assert.assertNotNull(result);
+		System.out.println(result);
+	}
+	
+	@Test
+	public void calculate_one_item_has_discount95_test() throws Exception {
+		Calculate calculate = new Calculate();
+		Map<String, Double> buyMap = new HashMap<>();
+		buyMap.put("ITEM000003", 6.00);
+		String result = calculate.calculate(buyMap);
+		Assert.assertNotNull(result);
+		System.out.println(result);
+	}
+	
+	@Test
+	public void calculate_two_item_has_discount2_1_and_discount95_test() throws Exception {
+		Calculate calculate = new Calculate();
+		Map<String, Double> buyMap = new HashMap<>();
+		buyMap.put("ITEM000000", 4.00);
+		buyMap.put("ITEM000003", 6.00);
+		String result = calculate.calculate(buyMap);
+		Assert.assertNotNull(result);
+		System.out.println(result);
+	}
 }
