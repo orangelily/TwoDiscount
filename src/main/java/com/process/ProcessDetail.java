@@ -222,7 +222,7 @@ public class ProcessDetail {
 			sb.append(df.format(discountTotalPrice));
 			sb.append("元 节省：");
 			sb.append(totalPrice - discountTotalPrice);
-			sb.append("元");
+			sb.append("元\n************");
 		}
 		return sb.toString();
 	}
