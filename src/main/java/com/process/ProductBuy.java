@@ -1,7 +1,9 @@
-package com.model;
+package com.process;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.model.Product;
 
 public class ProductBuy {
 	//内部类，每一种商品的合计信息

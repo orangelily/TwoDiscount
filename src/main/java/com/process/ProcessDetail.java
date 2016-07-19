@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
-import com.model.ProductBuy;
-import com.model.ProductBuy.ProductForBuy;
+import com.process.ProductBuy.ProductForBuy;
+
+import java.util.Set;
 
 /**
  * 主要处理逻辑，计算价格，生成小票 2016年7月17日

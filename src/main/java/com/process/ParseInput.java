@@ -12,7 +12,6 @@ import java.util.Map;
 import com.exception.AddProductBuyInfoException;
 import com.exception.ProductBuyInfoException;
 import com.model.Product;
-import com.model.ProductBuy;
 
 /**
  * 解析输入的商品条形码列表，返回map，key为商品，value为商品的数量

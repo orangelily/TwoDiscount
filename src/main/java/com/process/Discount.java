@@ -1,4 +1,4 @@
-package com.model;
+package com.process;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.model.Product;
 
 /**
  * 抽象的打折信息类，里面包含同一类打折的商品列表，

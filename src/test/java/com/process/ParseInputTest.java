@@ -1,10 +1,11 @@
-package com.model;
+package com.process;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import com.process.ParseInput;
 import com.process.ProcessDetail;
+import com.process.ProductBuy;
 
 public class ParseInputTest {
 	// 购买商品列表
