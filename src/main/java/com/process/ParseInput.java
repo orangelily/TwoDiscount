@@ -30,7 +30,8 @@ public class ParseInput {
 
 	public ParseInput() {
 		readProductList();
-		
+		readDiscountList("/discountTwoSendOne.txt", dis2_1);
+		readDiscountList("/discountNinetyFive.txt", dis95);
 	}
 
 	public void readProductList() {
@@ -51,6 +52,27 @@ public class ParseInput {
 				map.put(barcode, product);
 			}
 
+		} catch (NumberFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			read.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void readDiscountList(String path, List<String> list) {
+		InputStream is = this.getClass().getResourceAsStream(path);
+		InputStreamReader read = new InputStreamReader(is);
+		BufferedReader br = new BufferedReader(read);
+		String lineTxt = null;
+		try {
+			while ((lineTxt = br.readLine()) != null) {
+				list.add(lineTxt);
+			}
 		} catch (NumberFormatException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -100,13 +122,13 @@ public class ParseInput {
 					throw new AddProductBuyInfoException();
 				} else {
 					String discountOption = "";
-					//如果有满二减一
-					if(dis2_1.contains(countSpli[0])){
-						discountOption="BUY_TWO_GET_ONE_FREE";
-					}else if(dis95.contains(countSpli[0])){
-						//如果满足95折
-						discountOption="FIVE_PERCENT_OFF";
-					}else{
+					// 如果有满二减一
+					if (dis2_1.contains(countSpli[0])) {
+						discountOption = "BUY_TWO_GET_ONE_FREE";
+					} else if (dis95.contains(countSpli[0])) {
+						// 如果满足95折
+						discountOption = "FIVE_PERCENT_OFF";
+					} else {
 					}
 					// 将购买商品添加到购物车
 					productBuy.addProduct(map.get(countSpli[0]), count, discountOption);
