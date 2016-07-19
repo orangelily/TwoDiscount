@@ -31,7 +31,13 @@ public class ParseInputTest {
 	public void json_parse_to_product_with_list_same_item_no_count() throws Exception {
 		//多个相同商品结算
 		String infoProductBuy = "['ITEM000001','ITEM000001', 'ITEM000001']";
+		ParseInput parseInput = new ParseInput();
+		productBuy = parseInput.parseInput(infoProductBuy);
+		ProcessDetail processDetail = new ProcessDetail();
+		String printInfo = processDetail.calculatebuy(productBuy);
 		
+		Assert.assertNotNull(printInfo);
+		System.out.println(printInfo);
 	}
 	
 	@Test
