@@ -62,7 +62,7 @@ public class Discount {
 			list.remove(barcode);
 	}
 	
-	//增删打折商品后，保存到txt文件中
+	//增删打折商品后，保存到txt文件中,扩展功能
 	public void saveTotxt(){
 		
 	}
