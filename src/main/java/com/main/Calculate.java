@@ -16,21 +16,21 @@ import com.model.Product;
 import com.model.ProductManager;
 
 /**
- * @author yefengzhichen
- * 2016年7月20日
+ * @author yefengzhichen 2016年7月20日
  */
 public class Calculate {
-	// 保存读取的product.txt
-//	private Map<String, Product> map = new HashMap<String, Product>();
-	// 买二送一的商品列表
-//	private List<String> dis2_1 = new ArrayList<String>();	
-	// 95折的商品列表
-//	private List<String> dis95 = new ArrayList<String>();
 
+	// private Map<String, Product> map = new HashMap<String, Product>();
+	// private List<String> dis2_1 = new ArrayList<String>();
+	// private List<String> dis95 = new ArrayList<String>();
+	// 替换上面的简单方式，方便扩展
+	// 买二送一的商品列表
 	private Discount dis2_1;
+	// 95折的商品列表
 	private Discount dis95;
+	// 保存读取的product.txt
 	private ProductManager map;
-	
+
 	public Calculate() {
 		map = new ProductManager();
 		dis2_1 = new Discount("/discountTwoSendOne.txt");
@@ -57,10 +57,11 @@ public class Calculate {
 			throw new ProductBuyInfoException();
 		}
 		inputString = newShopCar.substring(1, newShopCar.length() - 1).trim();
-		// 解析每一项，返回map
+		// 解析每一项,用，分割
 		String[] input = inputString.split(",");
 		Map<String, Double> buy = new HashMap<>();
 		for (String str : input) {
+			//去掉首尾的''
 			str = str.substring(1, str.length() - 1);
 			String[] content = str.split("-");
 			double num = 0.0;
@@ -97,9 +98,12 @@ public class Calculate {
 			Product product = map.get(barcode);
 			double price = product.getPrice();
 			double number = entry.getValue();
+			// 每一项的总金额
 			double subTotal = price * number;
+			// 每一项实际需要支付总金额
 			double subrRealTotal = 0.0;
 			if (dis2_1.contains(barcode) && (number - 3.0) >= 0.0) {
+				//是买二送一商品，且个数大于三个
 				int sendNumber = (int) number / 3;
 				subrRealTotal = price * (number - sendNumber);
 				if (twoSendOne.length() == 0) {
@@ -110,24 +114,29 @@ public class Calculate {
 				result.append("名称：" + product.getName() + "，数量：" + number + product.getUnit() + "，单价："
 						+ product.getPrice() + "(元)，小计：" + df.format(subrRealTotal) + "(元)\n");
 			} else if (dis95.contains(barcode)) {
+				//是95折商品
 				subrRealTotal = product.getPrice() * number * 0.95;
 				result.append("名称：" + product.getName() + "，数量：" + number + product.getUnit() + "，单价："
 						+ product.getPrice() + "(元)，小计：" + df.format(subrRealTotal) + "(元)，节省"
 						+ df.format(subTotal - subrRealTotal) + "(元)\n");
 			} else {
+				//不满足优惠条件
 				subrRealTotal = subTotal;
 				result.append("名称：" + product.getName() + "，数量：" + number + product.getUnit() + "，单价："
 						+ product.getPrice() + "(元)，小计：" + df.format(subrRealTotal) + "(元)\n");
 			}
+			//累加起来
 			total += subTotal;
 			realTotal += subrRealTotal;
 		}
+		//有买二送一优惠，则输出
 		if (twoSendOne.length() > 0) {
 			result.append(twoSendOne.toString());
 			result.append("\n");
 		}
 		result.append("----------------------\n");
 		result.append("总计：" + df.format(realTotal) + "(元)\n");
+		//有优惠商品，则输出节省金额
 		if (Math.abs(total - realTotal) > 0.000001)
 			result.append("节省：" + df.format(total - realTotal) + "(元)\n");
 		result.append("**********************");

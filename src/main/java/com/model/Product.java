@@ -1,9 +1,5 @@
 package com.model;
 
-/**
- * @author yefengzhichen
- * 2016年7月17日
- */
 public class Product {
     private String barcode;
     private String name;
