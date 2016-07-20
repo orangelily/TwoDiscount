@@ -13,6 +13,7 @@ import java.util.Map;
 import com.exception.ProductBuyInfoException;
 import com.model.Discount;
 import com.model.Product;
+import com.model.ProductManager;
 
 /**
  * @author yefengzhichen
@@ -20,7 +21,7 @@ import com.model.Product;
  */
 public class Calculate {
 	// 保存读取的product.txt
-	private Map<String, Product> map = new HashMap<String, Product>();
+//	private Map<String, Product> map = new HashMap<String, Product>();
 	// 买二送一的商品列表
 //	private List<String> dis2_1 = new ArrayList<String>();	
 	// 95折的商品列表
@@ -28,73 +29,12 @@ public class Calculate {
 
 	private Discount dis2_1;
 	private Discount dis95;
+	private ProductManager map;
 	
 	public Calculate() {
-		readProductList();
+		map = new ProductManager();
 		dis2_1 = new Discount("/discountTwoSendOne.txt");
 		dis95 = new Discount("/discountNinetyFive.txt");
-	}
-
-	/**
-	 * 读取商品信息列表，放到全局变量map中
-	 */
-	public void readProductList() {
-		InputStream is = this.getClass().getResourceAsStream("/product.txt");
-		InputStreamReader read = new InputStreamReader(is);
-		BufferedReader br = new BufferedReader(read);
-		String lineTxt = null;
-		try {
-			while ((lineTxt = br.readLine()) != null) {
-				String[] content = lineTxt.split(",");
-				String barcode = content[0];
-				String name = content[1];
-				String unit = content[2];
-				String category = content[3];
-				String subCategory = content[4];
-				double price = Double.parseDouble(content[5]);
-				Product product = new Product(barcode, name, unit, category, subCategory, price);
-				map.put(barcode, product);
-			}
-
-		} catch (NumberFormatException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			read.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * 读取打折商品列表
-	 * 
-	 * @param path
-	 *            某一类打折的文件路径
-	 * @param list
-	 *            保存获取的打折商品列表
-	 */
-	public void readDiscountList(String path, List<String> list) {
-		InputStream is = this.getClass().getResourceAsStream(path);
-		InputStreamReader read = new InputStreamReader(is);
-		BufferedReader br = new BufferedReader(read);
-		String lineTxt = null;
-		try {
-			while ((lineTxt = br.readLine()) != null) {
-				list.add(lineTxt);
-			}
-		} catch (NumberFormatException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			read.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -192,14 +132,6 @@ public class Calculate {
 			result.append("节省：" + df.format(total - realTotal) + "(元)\n");
 		result.append("**********************");
 		return result.toString();
-	}
-
-	public Map<String, Product> getMap() {
-		return map;
-	}
-
-	public void setMap(Map<String, Product> map) {
-		this.map = map;
 	}
 
 }
