@@ -11,20 +11,28 @@ import java.util.List;
 import java.util.Map;
 
 import com.exception.ProductBuyInfoException;
+import com.model.Discount;
 import com.model.Product;
 
+/**
+ * @author yefengzhichen
+ * 2016年7月20日
+ */
 public class Calculate {
 	// 保存读取的product.txt
 	private Map<String, Product> map = new HashMap<String, Product>();
 	// 买二送一的商品列表
-	private List<String> dis2_1 = new ArrayList<String>();
+//	private List<String> dis2_1 = new ArrayList<String>();	
 	// 95折的商品列表
-	private List<String> dis95 = new ArrayList<String>();
+//	private List<String> dis95 = new ArrayList<String>();
 
+	private Discount dis2_1;
+	private Discount dis95;
+	
 	public Calculate() {
 		readProductList();
-		readDiscountList("/discountTwoSendOne.txt", dis2_1);
-		readDiscountList("/discountNinetyFive.txt", dis95);
+		dis2_1 = new Discount("/discountTwoSendOne.txt");
+		dis95 = new Discount("/discountNinetyFive.txt");
 	}
 
 	/**
@@ -194,19 +202,4 @@ public class Calculate {
 		this.map = map;
 	}
 
-	public List<String> getDis2_1() {
-		return dis2_1;
-	}
-
-	public void setDis2_1(List<String> dis2_1) {
-		this.dis2_1 = dis2_1;
-	}
-
-	public List<String> getDis95() {
-		return dis95;
-	}
-
-	public void setDis95(List<String> dis95) {
-		this.dis95 = dis95;
-	}
 }
