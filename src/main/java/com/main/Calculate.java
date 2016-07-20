@@ -174,10 +174,10 @@ public class Calculate {
 			total += subTotal;
 			realTotal += subrRealTotal;
 		}
-		if(twoSendOne.length()>0){
+		if (twoSendOne.length() > 0) {
 			result.append(twoSendOne.toString());
 			result.append("\n");
-		}	
+		}
 		result.append("----------------------\n");
 		result.append("总计：" + df.format(realTotal) + "(元)\n");
 		if (Math.abs(total - realTotal) > 0.000001)
